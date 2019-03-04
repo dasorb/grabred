@@ -1,6 +1,7 @@
 package com.grabred.dao;
 
 import com.grabred.pojo.RedPacket;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -25,4 +26,19 @@ public interface RedPacketDao {
      */
     public int decreaseRedPacket(Long id);
 
+
+    /****
+     * 使用for update语句加锁
+     * @param id 红包id
+     * @return 红包信息
+     */
+    public RedPacket getRedPacketForUpdate(Long id);
+
+    /****
+     * 使用version乐观锁来更新库存
+     * @param id
+     * @param version
+     * @return
+     */
+    public int decreaseRedPacketForVersion(@Param("id") Long id, @Param("version") Integer version);
 }

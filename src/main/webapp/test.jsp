@@ -14,11 +14,11 @@
     <script>
         $(document).ready(function () {
             //模拟3000个异步请求，进行并发
-            var max = 3000;
+            var max = 2000;
             for(var i = 1; i <= max; i++) {
                 $.post({
                     //请求抢id为1的红包
-                    url:"./userRedPacket/grabRedPacket.do?redPacketId=1&userId="+i,
+                    url:"./userRedPacket/grabRedPacketByRedis.do?redPacketId=5&userId="+i,
                     //成功回调
                     success : function (result) {
                     }
